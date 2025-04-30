@@ -1,0 +1,43 @@
+<body>
+  <header>
+    <h2>Welcome to IRIS-Nator</h2>
+  </header>
+  <main>
+    <section class="top-score">
+      @defer{
+      <app-score></app-score>
+    } @loading {
+      <span class="loader"></span>
+    } 
+    </section>
+    <section class="question">
+      @if (status == APP_CONSTANTS.QUESTION)
+      {
+        <app-question 
+          (changeStatusEvent)="changeStatus($event)" 
+          (notifyUpdateScoreEvent)="updateScoreBoard()"
+          (updateCharacterEvent)="onUpdateCharacter($event)"
+          (updateDataEvent)="onUpdateData($event)">
+        </app-question>
+      } 
+      @if (status == APP_CONSTANTS.PRESENTATION)
+      {
+        <app-presentation (changeStatusEvent)="changeStatus($event)"></app-presentation>
+      } 
+      @if (status == APP_CONSTANTS.CONGRATULATIONS)
+      {
+        <app-congratulation
+        (changeStatusEvent)="changeStatus($event)" 
+        characterName="{{characterName}}"></app-congratulation>
+      } 
+      @if (status == APP_CONSTANTS.NEW_CHARACTER && hasChanged)
+      {
+        <app-new-character (changeStatusEvent)="changeStatus($event)" [data]="data"></app-new-character>
+      }
+
+    </section>
+  </main>
+  <footer>
+    <span>&copy; 2025 IRIS-Nator</span>
+  </footer>
+</body>

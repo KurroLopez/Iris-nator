@@ -1,0 +1,27 @@
+
+button .line1 {
+    font-size: 25px; 
+    display: block;
+}
+
+input {
+    background: transparent;
+    border: 0px;
+    border-bottom: 1px solid black;
+}
+input:focus {
+    outline: none;
+    background-color: #008C7A;
+}
+input:hover {
+    outline: none;
+    background-color: #008C7A;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    font-size: 24px;
+
+}

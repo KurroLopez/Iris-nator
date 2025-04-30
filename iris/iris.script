@@ -1,0 +1,36 @@
+  set workfolder = "/opt/irisapp/"
+  zn "%SYS"
+  Do ##class(Security.Users).UnExpireUserPasswords("*")
+  set prop("DeepSeeEnabled")=1
+  do ##class(Security.Applications).Modify("/csp/user",.prop)
+  do $SYSTEM.SQL.Execute("UPDATE Security.Resources set PublicPermission = 1 where ID = '%db_user'")
+  zn "USER"
+  set version="latest" 
+  set request=##class(%Net.HttpRequest).%New()
+  set request.Server="pm.community.intersystems.com"
+  set request.SSLConfiguration="ISC.FeatureTracker.SSL.Config" 
+  do request.Get("/packages/zpm/"_version_"/installer")
+  do $system.OBJ.LoadStream(request.HttpResponse.Data,"c")
+  zpm "enable -community"
+  zpm "install webterminal -v" 
+  ZPM "install iris-deploy-tools"
+  hang 2
+  #; set sc = $SYSTEM.OBJ.LoadDir("/opt/irisapp/src/Installer", "ck", , 1)
+  #; if sc do ##class(Irisnator.Installer).Install()
+  #; zn "IRISNATOR"
+  do $system.OBJ.LoadDir(workfolder_"src/Irisnator","cku", , 1)
+  Do ##class(Irisnator.Deploy).Deploy()
+  hang 2
+  set production = "Irisnator.Production"
+  set ^Ens.Configuration("csp","LastProduction") = production
+  do ##class(Ens.Director).SetAutoStart(production)
+
+  // Load initial data
+  set query = ""
+  set query = query_"LOAD DATA FROM FILE '"_workfolder_"data/InitialNodes.csv' "
+  set query = query_"INTO Irisnator_data.Nodes"
+  set query = query_"(NodeID, Question, Verb, Text) "
+  
+  do $SYSTEM.SQL.Execute(query)
+  
+  halt

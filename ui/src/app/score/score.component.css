@@ -1,0 +1,16 @@
+.div-score{
+    width: 20vw;
+    margin: 0 auto;
+    background-color: #313192;
+    height: calc(100vh - 16vh); /* 100% of the viewport height minus the height of the header and footer */
+    /* border-radius: 10px; */
+    padding: 10px;
+    border-bottom: 4px solid black;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+
+}
+h2{
+    text-align: center;
+    color: #fff;
+}

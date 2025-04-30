@@ -1,0 +1,46 @@
+@if (hasData)
+{
+<div class ="div-content">
+    <div class="row">
+        <div class="col-2">
+          <img src="assets/images/irisnator-thinking.png" alt="character" class="img-irisnator">
+        </div>
+        <div class="col-10">
+            <h1 class="question-title">Question #{{ questionIndex }}</h1>
+            @if (data?.question)
+            {
+                <h2 class="question-text">{{ data.verb | capitalize }} your character {{ data?.text }}?</h2>
+            }
+            @else
+            {
+                <h2 class="question-text">Is your character {{data?.text}}?</h2>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="div-buttoms">
+            <button class="button-yes" (click)="buttonClick(data.nodeYes)" >Yes</button>
+            <button class="button-no" (click)="buttonClick(data.nodeNo)" >No</button>
+        </div>
+    </div>
+</div>
+}
+@else
+{
+<div class="div-content">
+    <div class="row">
+        <div class="col-2">
+            <img src="assets/images/irisnator-thinking.png" alt="character" class="img-irisnator">
+        </div>
+        <div class="col-10">
+            <h1 class="question-title">Question #{{ questionIndex }}</h1>
+            <h2 class="question-text">Loading...</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="div-buttoms">
+            <span class="loader"></span>
+        </div>
+    </div>
+</div>
+}

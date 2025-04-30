@@ -1,0 +1,33 @@
+<div class="div-content">
+  <div class="row">
+    <div class="col-2">
+      <img src="assets/images/irisnator-sad.png" alt="character" class="img-irisnator">
+    </div>
+    <div class="col-10">
+      <h1>Oops.. I was wrong.</h1>
+      <h2>I couldn't guess this time, could you help me?</h2>
+      <form [formGroup]="characterForm" (ngSubmit)="onSubmit()">
+        <p>Please tell me what your character's name is and how I can differentiate it from "{{data.text}}"</p>
+        <p>(for example: is your character a tall person?)</p>
+        <input id="oldCharacter" formControlName="oldCharacter" value="{{data.text}}" required hidden>
+        <input id="nodeId" formControlName="nodeId" value="{{data.nodeId}}" required hidden>
+        <div class="div-new-character">
+          <label for="newCharacter">Chracter's name:</label>
+          <input id="newCharacter" formControlName="newCharacter" required>
+        </div>
+        <div class="div-question-new-character">
+          <input style="width: 80px;" id="verb" formControlName="verb" required>
+          <span>your character </span>
+          <input id="text" formControlName="text" required>
+          <span>?</span>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <div class="div-buttoms">
+        <button (click)="onSubmit()" type="submit">
+          <span class="line1">Create new character</span>
+        </button>
+      </div>
+    </div>
+</div>

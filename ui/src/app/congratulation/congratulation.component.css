@@ -1,0 +1,14 @@
+.congratulation{
+    color: black;
+    text-align: left;
+    font-size: 32px;
+    padding: 10px;
+}
+
+.character-name{
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+    text-align: justify;
+    margin-top: 10px;
+}

@@ -1,0 +1,32 @@
+
+button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  border-color: black;
+  margin: 25px auto;
+  height: 5vw;
+  cursor: pointer;
+  border-radius: 15px;
+  width: 20vw;
+  filter: brightness(.8);
+  color: white;
+}
+
+.button-yes{
+   background-color: green;
+}
+
+.button-no{
+    background-color: red;
+ }
+
+ .button-yes:hover{
+    filter: brightness(1);
+    transition: background-color 0.3s ease;
+ }
+ .button-no:hover{
+  filter: brightness(1);
+  transition: background-color 0.3s ease;
+}
