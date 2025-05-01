@@ -5,7 +5,7 @@ Think about a real or fictional character
 Do you dare?
 
 # How does it work
-ThThe application will ask you several questions to guess which character you are thinking of. Depending on your “yes” or “no” answers, it will try to guess it.
+The application will ask you several questions to guess which character you are thinking of. Depending on your “yes” or “no” answers, it will try to guess it.
 If it doesn't guess, you can tell it which character you thought of and how to differentiate it from the last character it thought it was.
 
 # How to use it
