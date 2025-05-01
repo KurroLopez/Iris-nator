@@ -15,11 +15,11 @@ To download the code from GitHub, follow these steps:
 
 1. Clone the repository from GitHub:
     ```bash
-    git clone https://github.com/KurroLopez/irisnator
+    git clone https://github.com/KurroLopez/iris-nator
     ```
 2. Navigate to the project directory:
     ```bash
-    cd irisnator
+    cd iris-nator
     ```
 3. Build and start the Docker containers:
     ```bash
