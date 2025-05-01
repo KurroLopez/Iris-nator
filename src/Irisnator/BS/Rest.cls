@@ -8,7 +8,6 @@ XData UrlMap [ XMLNamespace = "http://www.intersystems.com/urlmap" ]
 	<Route Url="(?i)/node" Method="POST" Call="PostNode"/>
     <Route Url="(?i)/score" Method="POST" Call="PostScore"/>
     <Route Url="(?i)/score/:top" Method="GET" Call="GetScore"/>
-    <Route Url="(?i)/newscore" Method="POST" Call="PostNewScore"/>
 </Routes>
 }
 
@@ -115,42 +114,6 @@ ClassMethod GetScore(top) As %Status
 
     set pRequest = ##class(Irisnator.MSG.API.Score.TopScoreRequest).%New()
     set pRequest.TopScore = top
-    
-    set tSC = service.OnProcessInput(pRequest, .pResponse, service.BusinessNodesConfigName)
-
-    if ($$$ISERR(tSC)) {
-        set %response.Status = ..#HTTP500INTERNALSERVERERROR
-        quit tSC
-    }
-    
-    set %response.Status= ..#HTTP200OK
-    //Do %response.SetHeader("Access-Control-Allow-Origin","*")
-    do pResponse.%JSONExportToString(.jsonResponse)
-    
-    set formatter=##class(%JSON.Formatter).%New()
-    do formatter.Format(jsonResponse)
-    quit $$$OK
-}
-
-ClassMethod PostNewScore() As %Status
-{
-    do ##class(Ens.Director).CreateBusinessService("Irisnator.BS.Rest", .service)
-    #; $$$LOGINFO("JobId: "_$JOB)
-    #; kill ^%kurro
-    #; set ^%kurro(0)=$JOB
-    #; for  {hang 20 break    quit:$get(^%kurro) }
-    #; #; just hang around until ^%kurro =1
-
-    set %response.CharSet = "utf-8"
-    set %response.ContentType="application/json"
-
-    set pRequest = ##class(Irisnator.MSG.API.Score.NewScoreRequest).%New()
-    set tSC = pRequest.%JSONImport(%request.Content)
-    
-    if ($$$ISERR(tSC)) {
-        set %response.Status = ..#HTTP500INTERNALSERVERERROR
-        quit tSC
-    }
     
     set tSC = service.OnProcessInput(pRequest, .pResponse, service.BusinessNodesConfigName)
 

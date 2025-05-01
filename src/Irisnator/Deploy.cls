@@ -15,7 +15,6 @@ ClassMethod Deploy()
     do ..AddItem(production, "Irisnator.BP.Score","Irisnator.BP.Score")
     do ..AddItem(production, "Irisnator.BP.TopScore","Irisnator.BP.TopScore")
     do ..AddItem(production, "Irisnator.BP.Node","Irisnator.BP.Node")
-    do ..AddItem(production, "Irisnator.BP.NewScore","Irisnator.BP.NewScore")
     // Add default parameters
     do ..AddDefaultSetting(production,,"Irisnator.BS.Rest","BusinessNodesConfigName","Irisnator.BP.BusinessNodes")
 

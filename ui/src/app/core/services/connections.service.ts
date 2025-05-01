@@ -23,8 +23,8 @@ export class ConnectionsService {
     return this.http.post(`${this.apiUrl}/node`, data);
   }
 
-  postNewScore(data: any) {
-    return this.http.post(`${this.apiUrl}/newscore`, data);
+  postScore(data: any) {
+    return this.http.post(`${this.apiUrl}/score`, data);
   }
 
 }

@@ -46,19 +46,8 @@ XData BPL [ XMLNamespace = "http://www.intersystems.com/bpl" ]
 </call>
 <sync name='WaitNode' calls='Node' type='all' xpos='1010' ypos='500' />
 </case>
-<case condition='$classname(request)="Irisnator.MSG.API.Score.NewScoreRequest"' name='Irisnator.MSG.API.Score.NewScoreRequest' >
-<call name='NewScore' target='Irisnator.BP.NewScore' async='1' xpos='1280' ypos='400' >
-<request type='Ens.Request' >
-<assign property="callrequest" value="request" action="set" languageOverride="" />
-</request>
-<response type='Ens.Response' >
-<assign property="response" value="callresponse" action="set" languageOverride="" />
-</response>
-</call>
-<sync name='WaitNewScore' calls='NewScore' type='all' xpos='1280' ypos='500' />
-</case>
 <case condition='$classname(request)="Irisnator.MSG.API.Node.Request"' name='Irisnator.MSG.API.Node.Request' >
-<call name='GetNode' target='Irisnator.BP.GetNode' async='1' xpos='1550' ypos='400' >
+<call name='GetNode' target='Irisnator.BP.GetNode' async='1' xpos='1280' ypos='400' >
 <request type='Ens.Request' >
 <assign property="callrequest" value="request" action="set" languageOverride="" />
 </request>
@@ -66,8 +55,8 @@ XData BPL [ XMLNamespace = "http://www.intersystems.com/bpl" ]
 <assign property="response" value="callresponse" action="set" languageOverride="" />
 </response>
 </call>
-<sync name='WaitGetNode' calls='GetNode' type='all' xpos='1550' ypos='500' />
-<code name='CalculateNextNode' xpos='1550' ypos='600' >
+<sync name='WaitGetNode' calls='GetNode' type='all' xpos='1280' ypos='500' />
+<code name='CalculateNextNode' xpos='1280' ypos='600' >
 <![CDATA[ if response.Question = 0 {
     set response.NodeYes = 0
     set response.NodeNo= -1

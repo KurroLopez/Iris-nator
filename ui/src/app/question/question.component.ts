@@ -66,8 +66,8 @@ export class QuestionComponent {
     }
     
     sendCharacterName(){
-      const data = {characterName: this.data.text};
-      this.connectionService.postNewScore(data).subscribe((data:any) => {
+      const data = {characterName: this.data.text, success: true};
+      this.connectionService.postScore(data).subscribe((data:any) => {
         this.notifyUpdateScoreBoard();
         this.updateCharacterEvent.emit(this.data.text);
         this.ChangeStatus(APP_CONSTANTS.CONGRATULATIONS);
